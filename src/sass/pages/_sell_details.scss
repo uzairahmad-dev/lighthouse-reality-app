@@ -1,0 +1,200 @@
+.sell__details {
+    background: $color-grey-light-1;
+
+    &__card {
+        width: 80%;
+        // height: 54rem;
+        border-radius: 1.5rem;
+        background: $color-grey-light-1;
+        box-shadow: 0 1rem 2rem rgba($color-black,.2);
+        text-align: center;
+        margin: 3rem auto;
+        padding: 1rem;
+        z-index: 300;
+        transition: all .6s;
+
+        // @include respond(phone-max) {
+        //     height: 60rem;
+        // }
+
+        // @include respond(phone) {
+        //     height: 54rem;
+        // }
+
+        // @include respond(mobile-x) {
+        //     height: 56rem;
+        // }
+
+
+        &-heading {
+            color: $color-primary-dark;
+            font-size: 2.6rem;
+            margin-top: 1rem;
+
+            &-sub{
+                text-align: left;
+                color: $color-primary-dark;
+                font-size: 1.8rem;
+                font-weight: bold;
+            }
+        }
+    }
+
+    &__begin {
+        // width: 100%;
+        // height: 100vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        @include respond(tab-port-max) {
+            height: 80vh;
+        }
+
+        &--left {
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+            @include respond(phone) {
+                display: none;
+            }
+
+            @include respond(tab-port-max) {
+                height: 80vh;
+            }
+
+             & img {
+                 width: 50rem;
+
+                 @include respond(tab-port-mini) {
+                     width: 35rem;
+                 }
+             }
+        }
+
+    }
+    &__radio-group {
+        width: 49%;
+        display: inline-block;
+
+        // @include respond(tab-port) {
+        //     width: 100%;
+        //     margin-bottom: 2rem;
+        // }
+    }
+
+    &__radio-input {
+        display: none;
+    }
+
+    &__radio-label {
+        font-size: 1.8rem;
+        color: $color-primary;
+        cursor: pointer;
+        position: relative;
+        padding-left: 2.5rem;
+    }
+
+    &__radio-button {
+        height: 2rem;
+        width: 2rem;
+        border: 3px solid $color-primary;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: -.4rem;
+
+        &::after {
+            content: "";
+            display: block;
+            height: 8px;
+            width: 8px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background-color: $color-primary;
+            opacity: 0;
+            transition: opacity .2s;
+        }
+    }
+
+    &__radio-input:checked ~ &__radio-label &__radio-button::after {
+        opacity: 1;
+    }
+}
+
+.property-details{
+
+    &-input {
+        padding: 8px;
+        width: 5.5rem;
+        border: .5px solid $color-grey-dark;
+        border-radius: 6px;
+
+        &:focus {
+            outline: none;
+        }
+
+        &::placeholder{
+            font-family: $font-nunito;
+        }
+
+        &--large {
+            padding: 8px;
+            width: 70%;
+        }
+    }
+
+    &-textarea {
+        display: block;
+        margin: 6px auto;
+        width: 70%;
+        height: 7rem;
+        padding: 6px;
+        border: .5px solid $color-grey-dark;
+        border-radius: 6px;
+
+        &:focus {
+            outline: none;
+        }
+
+        &::placeholder {
+            font-family: $font-nunito;
+        }
+    }
+
+    &-inputs {
+        margin-top: 3rem;
+        text-align: left;
+    }
+
+    &-heading {
+        text-align: center;
+        font-size: 2.6rem;
+        color: $color-primary-dark;
+        margin: 1rem 0;
+    }
+
+    &-sub-heading {
+        font-size: 1.6rem;
+        color: $color-primary;
+        margin-right: 8px;
+        margin-left: 6px;
+    }
+
+}
+
+.agree {
+    text-align: left;
+    
+    & input {
+        display: inline;
+        
+    }
+}

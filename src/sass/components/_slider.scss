@@ -1,0 +1,16 @@
+.img-slider {
+    // width: 100%;
+    display: flex;
+
+    & > * {
+        margin-left: 6px;
+        margin-right: 6px;
+        margin-top: 3rem;
+    }
+
+    & .house_interior {
+        width: 16rem;
+        background-size: cover;
+        background-position: center;
+    }
+}
