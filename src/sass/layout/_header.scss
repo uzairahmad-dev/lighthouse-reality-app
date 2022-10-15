@@ -22,7 +22,7 @@
         left: 0;
         width: 100%;
         height: 60%;
-        background: rgba(16,29,44,0.6);
+        background: rgba(16, 29, 44, 0.6);
         border-radius: 0 0 50% 50%/0 0 100% 100%;
         transform: scale(1.2);
 
@@ -55,7 +55,7 @@
         height: 100%;
         z-index: -1;
         overflow: hidden;
-    
+
         &__content {
             height: 100%;
             width: 100%;
@@ -75,7 +75,7 @@
         width: 75%;
         top: 30%;
         left: 50%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
 
         @include respond(tab-port) {
             top: 26%;
@@ -93,7 +93,7 @@
 
         @include respond(phone) {
             top: 20%;
-        }  
+        }
 
         @include respond(mobile) {
             left: 47%;
@@ -105,7 +105,7 @@
 
         &__heading {
             font-weight: bold;
-            font-size: 2.6rem;
+            font-size: 2.4rem;
             text-align: left;
             width: 100%;
 
@@ -146,8 +146,8 @@
             }
 
             @include respond(mobile-x) {
-                font-size: .9rem;
-                margin-left: .8rem;
+                font-size: 0.9rem;
+                margin-left: 0.8rem;
             }
         }
 
@@ -182,22 +182,22 @@
             }
 
             @include respond(mobile) {
-                font-size: .8rem;
+                font-size: 0.8rem;
                 margin-left: 4rem;
             }
 
             @include respond(mobile-x) {
-                font-size: .7rem;
+                font-size: 0.7rem;
                 margin-left: 3rem;
             }
         }
     }
 
-    &__btn { 
+    &__btn {
         position: absolute;
         top: 50%;
         left: 48%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
 
         @include respond(tab-port) {
             top: 42%;
