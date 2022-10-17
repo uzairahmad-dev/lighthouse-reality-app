@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
-import Showcase from '../../components/UI/Showcase/Showcase';
+import Showcase from '../../components/Showcase/Showcase';
 import InputDropdown from '../../components/UI/Input/InputDropdown/InputDropdown';
 import BuyContent from './BuyContent/BuyContent';
 import { BuyBg } from '../../assets/image/index';
 
 const Buy: React.FC = () => {
-    const [searched, setSearched] = useState('');
-    const [selected, setSelected] = useState('buy');
+    const [searched, setSearched] = useState<string>('');
+    const [selected, setSelected] = useState<string>('buy');
+
+    const [searchParams] = useSearchParams();
+    const rent: string | null = searchParams.get('rent');
+
+    useEffect(() => {
+        if (rent && rent === 'true') {
+            setSelected('rent');
+        }
+    }, [rent]);
 
     const submitHandler = (e: React.SyntheticEvent): void => {
         e.preventDefault();
@@ -23,7 +33,7 @@ const Buy: React.FC = () => {
                     selectedValue={selected}
                     selected={(e: React.ChangeEvent<HTMLSelectElement>) => setSelected(e.target.value)}
                     value={(e: React.ChangeEvent<HTMLInputElement>) => setSearched(e.target.value)}
-                    holderTxt={searched ? searched : 'Enter address, city'}
+                    holderTxt={searched ? searched : 'Enter City Name'}
                 />
             </Showcase>
             <BuyContent />

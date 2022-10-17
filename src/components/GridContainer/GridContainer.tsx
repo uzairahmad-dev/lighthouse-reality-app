@@ -1,8 +1,8 @@
 import React from 'react';
 
-import ServicesSection from '../UI/ServicesSection/ServicesSection';
-import TopRealtorsSection from '../UI/TopRealtorsSection/TopRealtorsSection';
-import ClientsSection from '../UI/ClientsSection/ClientsSection';
+import ServicesSection from '../ServicesSection/ServicesSection';
+import TopRealtorsSection from '../TopRealtorsSection/TopRealtorsSection';
+import ClientsSection from '../ClientsSection/ClientsSection';
 
 const GridContainer: React.FC = (props) => {
     return (

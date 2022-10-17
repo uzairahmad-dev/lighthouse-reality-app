@@ -1,7 +1,7 @@
 import React from 'react';
 
 import RealtorsDetail from './RealtorsDetail/RealtorsDetail';
-import { TopRealtor1, TopRealtor2, TopRealtor3, TopRealtor4 } from '../../../assets/image/index';
+import { TopRealtor1, TopRealtor2, TopRealtor3, TopRealtor4 } from '../../assets/image/index';
 
 const TopRealtors: React.FC = () => {
     return (

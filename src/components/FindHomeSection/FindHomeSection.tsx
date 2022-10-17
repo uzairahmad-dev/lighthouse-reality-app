@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Couple, BeachHouse } from '../../../assets/image/index';
-import { RightArrowLight, BackgroundLeft, BackgroundRound } from '../svgComponents/index';
+import { Couple, BeachHouse } from '../../assets/image/index';
+import { RightArrowLight, BackgroundLeft, BackgroundRound } from '../UI/svgComponents/index';
 
 const FindHome: React.FC = () => {
     return (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { RightArrowSingle, LeftArrowSingle } from '../../svgComponents/index';
+import { RightArrowSingle, LeftArrowSingle } from '../../UI/svgComponents/index';
 
 type DiscoverBoxProps = {
     boxNo: string;

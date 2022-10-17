@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ServicesCard from './ServicesCard/ServicesCard';
-import { SellLink, BuyFromUs, RentalFromUs, WorkWithUs } from '../svgComponents/index';
+import { SellLink, BuyFromUs, RentalFromUs, WorkWithUs } from '../UI/svgComponents/index';
 
 const Services: React.FC = () => {
     return (

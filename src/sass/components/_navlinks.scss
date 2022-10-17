@@ -2,14 +2,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: .2rem;
+    margin-top: 0.2rem;
 
     &__text {
         color: $color-grey-light-1;
         font-size: 2rem;
         text-decoration: none;
-        margin-left: .4rem;
-        transition: .3s all;
+        margin-left: 0.4rem;
+        transition: 0.3s all;
+        cursor: pointer;
 
         &:hover {
             color: $color-primary;
@@ -32,13 +33,13 @@
         }
 
         @include respond(mobile-x) {
-            font-size: .8rem;
+            font-size: 0.8rem;
         }
     }
 
     &__left {
         display: inline;
-        margin-left: .8rem;
+        margin-left: 0.8rem;
 
         & .navbar__links__box {
             margin-right: 2.2rem;
@@ -48,7 +49,7 @@
             }
 
             @include respond(mobile-x) {
-                margin-right: .6rem;
+                margin-right: 0.6rem;
             }
         }
     }
@@ -70,11 +71,11 @@
         margin-right: 1.7rem;
 
         @include respond(mobile) {
-            margin-right: .8rem;
+            margin-right: 0.8rem;
         }
 
         @include respond(mobile-x) {
-            margin-right: .3rem;
+            margin-right: 0.3rem;
         }
     }
 
@@ -89,7 +90,7 @@
 
         @include respond(tab-port-mini) {
             height: 8rem;
-            padding-left: .8rem;
+            padding-left: 0.8rem;
         }
 
         @include respond(phone-max) {
@@ -125,8 +126,8 @@
         }
 
         @include respond(mobile-x) {
-            width: .9rem;
-            height: .9rem;
+            width: 0.9rem;
+            height: 0.9rem;
         }
     }
 

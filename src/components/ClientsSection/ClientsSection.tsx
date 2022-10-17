@@ -1,8 +1,8 @@
 import React from 'react';
 
 import Story from './Story/Story';
-import { BackgroundRight, BackgroundDown } from '../svgComponents/index';
-import { client1, client2 } from '../../../assets/image/index';
+import { BackgroundRight, BackgroundDown } from '../UI/svgComponents/index';
+import { client1, client2 } from '../../assets/image/index';
 
 const Clients: React.FC = () => {
     return (
