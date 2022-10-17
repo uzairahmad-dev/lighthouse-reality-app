@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { HireRealtorSvg } from '../../../assets/svg/index';
 
@@ -19,9 +20,9 @@ const SellContent: React.FC = () => {
                     </p>
                     <p className="heading-medium">Sell with ease</p>
                     <p className="paragraph u-margin-bottom-medium">Skip the listing process and move on your schedule.</p>
-                    <a href="!#" className="btn btn--rec">
+                    <Link to="/realtors" className="btn btn--rec">
                         Hire Realtor
-                    </a>
+                    </Link>
                 </div>
                 <img src={HireRealtorSvg} alt="Realtor SVG" />
             </div>

@@ -22,7 +22,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ auth }) => {
             </div>
             <div className="navbar__links__box">
                 <LoginLink className="navbar__links__icon" />
-                <NavigationLink link="/login">Login</NavigationLink>
+                <NavigationLink link="login">Login</NavigationLink>
             </div>
             <div className="navbar__links__box">
                 <WorkLink className="navbar__links__icon" />

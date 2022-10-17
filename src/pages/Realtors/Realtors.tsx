@@ -10,7 +10,7 @@ const Realtors: React.FC = () => {
     return (
         <React.Fragment>
             <Showcase bgImg={RealtorBg} heading="Find Realtors" paragraph="Make sure your dreams are in trusted hands.">
-                <InputDouble holderTxtS="City" holderTxtB="Enter Agent Name (optional)" btnTxt="Search" />
+                <InputDouble holderTxtS="Enter City Name" holderTxtB="Agent Name (optional)" btnTxt="Search" />
             </Showcase>
             <RealtorBox />
         </React.Fragment>

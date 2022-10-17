@@ -22,7 +22,7 @@
     }
 
     &__input {
-        width: 40rem;
+        width: 30rem;
         border: none;
         border-radius: 1rem;
         padding: 1.2rem;
@@ -30,7 +30,7 @@
         display: inline-block;
         margin-right: 1rem;
         background: $color-grey-light-1;
-        box-shadow: 0 1rem 2rem rgba($color-black,.1);
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
         position: relative;
 
         @include respond(mobile) {
@@ -38,7 +38,7 @@
         }
 
         &--small {
-            width: 10rem; 
+            width: 20rem;
 
             @include respond(mobile) {
                 width: 8rem;
@@ -49,5 +49,4 @@
             color: $color-grey-dark;
         }
     }
-
 }

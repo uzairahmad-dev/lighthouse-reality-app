@@ -1,5 +1,4 @@
 .sign-up {
-
     &__form {
         position: absolute;
         top: 8%;
@@ -14,7 +13,7 @@
             left: 10%;
         }
     }
-    
+
     &__svg {
         width: 52rem;
         transform: translateY(2.5rem);
@@ -31,7 +30,7 @@
     &__realtors {
         background: $color-grey-light-1;
         width: 100%;
-        height:95vh;
+        height: 95vh;
         text-align: center;
         color: $color-primary;
 
