@@ -23,7 +23,7 @@ const Sell: React.FC = () => {
 
     let pageContent = (
         <React.Fragment>
-            <Showcase bgImg={SellBg} heading="Sell or Rent your Home" paragraph="We’ve partnered with companies to help you sell, buy and move. Find out what options are available for your home.">
+            <Showcase bgImg={SellBg} heading="Sell or Rent your Home" paragraph="We've partnered with companies to help you sell, buy and move. Find out what options are available for your home.">
                 <InputSimple holderText="Enter City Name" btnText="Get Started" submit={submitHandler} changed={(e: React.ChangeEvent<HTMLInputElement>) => setSearchedCity(e.target.value)} />
             </Showcase>
             <SellContent />
@@ -31,7 +31,7 @@ const Sell: React.FC = () => {
     );
 
     if (!onSearch) {
-        pageContent = <SellDetails />;
+        // pageContent = <SellDetails />;
     }
 
     return pageContent;
