@@ -21,7 +21,7 @@ const PropertySchema = new Schema(
       required: true,
     },
     images: {
-      type: [{ type: String }],
+      type: [String],
       validate: [
         propertyImagesLimit,
         "From 1 to 5 Property Images will be Accepted.",
@@ -47,6 +47,10 @@ const PropertySchema = new Schema(
     city: {
       type: String,
       required: true,
+    },
+    realtor: {
+      type: Schema.Types.ObjectId,
+      ref: "realtors",
     },
   },
   { timestamps: true }

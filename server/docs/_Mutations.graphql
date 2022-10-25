@@ -1,0 +1,27 @@
+mutation Create(
+  $for: String!
+  $images: [Upload!]!
+  $area: String!
+  $rooms: String!
+  $bathrooms: String!
+  $description: String!
+  $type: String!
+  $city: String!
+  $kind: String!
+) {
+  createNewProperty(
+    newProperty: {
+      for: $for
+      area: $area
+      bathrooms: $bathrooms
+      description: $description
+      images: $images
+      rooms: $rooms
+      kind: $kind
+      city: $city
+      type: $type
+    }
+  ) {
+    area
+  }
+}

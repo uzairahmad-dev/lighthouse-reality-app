@@ -8,4 +8,5 @@ export const {
   PROD,
   IN_PROD = PROD === "prod",
   BASE_URL = `http://localhost:${PORT}`,
+  SECRET,
 } = parsed;
