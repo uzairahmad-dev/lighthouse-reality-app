@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import NavigationLink from './NavigationLink/NavigationLink';
 import RentalModal from '../../UI/Modal/RentalModal/RentalModal';
+import { RootState } from '../../../store';
+
 
 import { BuyLink, RealtorLink, RentalLink, WorkLink, LoginLink, SellLink } from '../../UI/svgComponents/index';
-import { LogoWhite, TopRealtor1 } from '../../../assets/image/index';
+import { LogoWhite } from '../../../assets/image/index';
 
-type NavLinksProps = {
-    auth: Boolean;
-};
+const NavLinks: React.FC = () => {
 
-const NavLinks: React.FC<NavLinksProps> = ({ auth }) => {
     const [openRentalModal, setOpenRentalModal] = useState<Boolean>(false);
+    const realtorSlice = useSelector((state: RootState) => state.user.realtor);
+    const authSlice = useSelector((state: RootState) => state.user.isAuth);
+
+    const logout = () => {
+        localStorage.removeItem('token');
+        window.location.reload();
+    }
 
     let navRight = (
         <div className="navbar__links__right">
@@ -31,7 +38,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ auth }) => {
         </div>
     );
 
-    if (auth) {
+    if (authSlice && realtorSlice) {
         navRight = (
             <div className="navbar__links__right--login">
                 <div className="navbar__links__box">
@@ -39,9 +46,11 @@ const NavLinks: React.FC<NavLinksProps> = ({ auth }) => {
                     <NavigationLink link="realtors">Realtors</NavigationLink>
                 </div>
                 <div className="navbar__links__box">
-                    <img src={TopRealtor1} alt="user" className="navbar__links--user-image" />
+                    <NavigationLink link="/profile">
+                        <img src={realtorSlice?.avatarImage} alt="user" className="navbar__links--user-image" />
+                    </NavigationLink>
                 </div>
-                <div className="navbar__links__box">
+                <div className="navbar__links__box" onClick={logout}>
                     <NavigationLink link="/">Logout</NavigationLink>
                 </div>
             </div>

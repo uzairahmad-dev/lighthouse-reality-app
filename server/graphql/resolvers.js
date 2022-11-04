@@ -2,6 +2,11 @@ import { ApolloError } from "apollo-server-express";
 import bcryptjs from "bcryptjs";
 import { issueToken, serializeUser } from "../utils/helperFunctions.js";
 
+//! For Testing Loaders
+function timeout(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export const resolvers = {
   Query: {
     searchProperties: async (_, args, { Property }) => {
@@ -31,6 +36,9 @@ export const resolvers = {
       return properties;
     },
     searchRealtors: async (_, { city, name }, { Realtor }) => {
+      //! Testing Loaders
+      await timeout(5000);
+      
       let realtors = await Realtor.find();
 
       if (city && name) {
@@ -83,18 +91,20 @@ export const resolvers = {
       return result;
     },
     registerRealtor: async (_, { newRealtor }, { Realtor }) => {
+      //! Testing Loaders
+      await timeout(20000);
       try {
         let { userName, email } = newRealtor;
         //* Check if Username is exists already
         let realtor;
         realtor = await Realtor.findOne({ userName });
         if (realtor) {
-          throw new Error("Username is Already Taken.");
+          throw new Error("Username is Already Taken. Please Try Again!");
         }
         //* Check if Email is exists already
         realtor = await Realtor.findOne({ email });
         if (realtor) {
-          throw new Error("Email is Already Taken.");
+          throw new Error("Email is Already Taken. Please Try Again!");
         }
         //* Create New User Instance
         realtor = new Realtor(newRealtor);

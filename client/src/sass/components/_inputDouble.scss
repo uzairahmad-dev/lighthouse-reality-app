@@ -38,11 +38,15 @@
         }
 
         &--small {
-            width: 20rem;
+            width: 18rem;
 
             @include respond(mobile) {
                 width: 8rem;
             }
+        }
+
+        &--error {
+            border: 2px $color-red solid;
         }
 
         &::placeholder {

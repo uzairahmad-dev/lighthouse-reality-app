@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import InputSimple from '../../components/UI/Input/InputSimple/InputSimple';
 import Showcase from '../../components/Showcase/Showcase';
 import SellContent from './SellContent/SellContent';
-import SellDetails from '../../components/SellDetails/SellDetails';
+// import SellDetails from '../../components/SellDetails/SellDetails';
 import { AppDispatch } from '../../store';
 import { updateCity } from '../../store/SellDetails/SellDetailsSlice';
 import { SellBg } from '../../assets/image/index';

@@ -106,7 +106,14 @@
         }
     }
 
-    &--active,
+    &--active {
+        border-left: 4px solid #fff;
+
+        &:hover {
+            border: none;
+        }
+    }
+
     & li:hover {
         border-left: 4px solid #fff !important;
     }
@@ -314,6 +321,7 @@
         color: $color-primary-dark;
         font-size: 4rem;
         text-align: left;
+        text-transform: capitalize;
         
         @include respond(tab-port-max) {
             font-size: 3.4rem;
@@ -351,6 +359,8 @@
         background-color: $color-grey-light-1;
         outline: none;
         height: 4.3rem;
+        text-align: left;
+        text-transform: capitalize;
 
         @include respond(tab-port-max) {
             padding: .8rem;

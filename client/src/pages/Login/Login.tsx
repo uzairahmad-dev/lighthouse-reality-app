@@ -1,33 +1,52 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { SubmitHandler } from 'react-hook-form';
+import { useLazyQuery } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
+import { REALTOR_LOGIN_QUERY } from '../../graphql/queries';
+import LoginForm from '../../components/LoginForm/LoginForm';
+import LoginBox from './LoginBox/LoginBox';
+import FormHeader from '../../components/UI/FormHeader/FormHeader';
 import { LoginSvg } from '../../assets/svg/index';
+import { LogInFormValues } from '../../types';
+import { AppDispatch } from '../../store';
+import { updateAuth, updateRealtor } from '../../store/Realtor/RealtorSlice';
 
 const Login: React.FC = () => {
+
+    const [ login, { data, loading, error } ] = useLazyQuery(REALTOR_LOGIN_QUERY);
+    const dispatch = useDispatch<AppDispatch>();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+
+        if(data && data.loginRealtor) {
+            localStorage.setItem('token', data.loginRealtor.token);
+            dispatch(updateRealtor(data.loginRealtor.realtor));
+            dispatch(updateAuth(true));
+            navigate("/profile")
+        };
+        
+    }, [data]);
+  
+    const formSubmit: SubmitHandler<LogInFormValues> = async (data) => {
+        login({ variables: { email: data.email, password: data.password }, fetchPolicy: 'network-only' });
+    };
+
     return (
         <section className="login__realtors">
             <div className="login__realtors__content">
                 <img src={LoginSvg} alt="login-svg" className="login__svg u-margin-top-medium" />
                 <div>
                     <div className="login__form">
-                        <p className="heading-big">Realtors Login</p>
-                        <p className="paragraph-medium u-margin-bottom-small">
-                            Welcome Back at Lighthouse Realty. Make <br />
-                            your dreams true with us
-                        </p>
-                        <input className="input__normal u-margin-bottom-small" type="email" placeholder="Enter your E-mail" />
-                        <input className="input__normal u-margin-bottom-small" type="password" placeholder="Enter your Password" />
-                        <button className="btn btn--rec">Login</button>
+                        <FormHeader 
+                            heading='Realtors Login'
+                            subHeading='Welcome Back at Lighthouse Realty. Make your dreams true with us'
+                        />
+                        <LoginForm formSubmit={formSubmit} loading={loading} error={error} />
                     </div>
-                    <div className="login__not-yet">
-                        <p className="heading-big">Become Realtor</p>
-                        <p className="paragraph-medium">
-                            Become a member at Lighthouse Realty by just <br /> entering your information and start working.{' '}
-                        </p>
-                        <Link to="signup" className="btn btn--rec u-margin-top-small">
-                            Signup
-                        </Link>
-                    </div>
+                    <LoginBox />
                 </div>
             </div>
         </section>

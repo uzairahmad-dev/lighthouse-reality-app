@@ -1,22 +1,93 @@
 .sign-up {
-    &__form {
-        position: absolute;
-        top: 8%;
-        left: 55%;
 
+    &__form {
+        width: 50%;
+        margin: 1rem;
+        padding: 2rem;
+        text-align: center;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
 
-        @include respond(phone) {
-            left: 10%;
+        &--input {
+            width: 70%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid $color-grey-dark;
+            outline: none;
+            align-self: center;
+            font-family: $font-nunito;
+
+            &::placeholder {
+                font-family: $font-nunito;
+            }
+
+            &--small {
+                width: 40% !important;
+            }
+
+            &--error {
+                border: 2px solid $color-red !important;
+            }
+        }
+
+        &--single-line {
+            width: 70%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        &--select {
+            width: 40%;
+            padding: 1rem;
+            outline: none;
+            border: none;
+            border-radius: 4px;
+            color: $color-primary;
+        }
+
+        &--upload-button {
+            font-size: 1.2rem !important;
+            display: inline-block;
+
+            & > input[type="file"] {
+                display: none;
+            }
+        }
+
+        &--btn {
+            width: 60% !important;
+            justify-self: center;
+            align-self: center;
+        }
+
+        &--loader {
+            width: 60%;
+            justify-self: center;
+            align-self: center;
+
+            & > img {
+                width: 1rem;
+            }
+        }
+
+        &--error {
+            font-size: 1rem;
+            font-weight: bold;
+            color: $color-red;
+
+            &-div {
+                margin-top: 1px;
+                width: 70%;
+                text-align: right;
+            }
         }
     }
 
     &__svg {
         width: 52rem;
-        transform: translateY(2.5rem);
 
         @include respond(phone-max) {
             width: 46rem;
@@ -30,40 +101,16 @@
     &__realtors {
         background: $color-grey-light-1;
         width: 100%;
-        height: 95vh;
-        text-align: center;
         color: $color-primary;
-
-        @include respond(tab-port-mini) {
-            height: 60vh;
-        }
 
         &__content {
             display: flex;
             justify-content: space-between;
-            position: relative;
+            align-items: center;
 
             @include respond(phone) {
                 display: block;
             }
         }
     }
-}
-
-.confirmed-inputs {
-    text-align: left;
-
-    & textarea {
-        height: 6rem;
-
-        &::placeholder {
-            font-family: $font-nunito;
-        }
-    }
-}
-
-.input-label {
-    color: $color-primary-dark;
-    font-size: 2rem;
-    display: block;
 }

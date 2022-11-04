@@ -9,7 +9,7 @@ type NavbarProps = {
 const Navbar: React.FC<NavbarProps> = ({ navClass }) => {
     return (
         <nav className={navClass}>
-            <NavLinks auth={false} />
+            <NavLinks />
         </nav>
     );
 };

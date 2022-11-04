@@ -18,9 +18,11 @@ export const serializeUser = (user) => {
     "userName",
     "email",
     "bio",
+    "sold",
     "experience",
     "city",
     "fullName",
     "avatarImage",
+    "specialization"
   ]);
 };
