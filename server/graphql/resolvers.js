@@ -4,16 +4,16 @@ import { issueToken, serializeUser } from "../utils/helperFunctions.js";
 
 //! For Testing Loaders
 function timeout(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 export const resolvers = {
   Query: {
     searchProperties: async (_, args, { Property }) => {
       const { searchPropertyInput } = args;
+      console.log(searchPropertyInput.city);
       const shouldApplyFilter = searchPropertyInput !== undefined;
-
-      let properties = await Property.find();
+      let properties = await Property.find().populate("realtor");
 
       if (!shouldApplyFilter) {
         return properties;
@@ -29,28 +29,50 @@ export const resolvers = {
         properties = properties.filter(
           (p) =>
             searchPropertyInput.for === p.for &&
-            searchPropertyInput.city === p.city
+            (p.city.includes(searchPropertyInput.city) ||
+              searchPropertyInput.city.includes(p.city) ||
+              searchPropertyInput.city === p.city)
         );
       }
-
       return properties;
     },
     searchRealtors: async (_, { city, name }, { Realtor }) => {
-      //! Testing Loaders
-      await timeout(5000);
-      
       let realtors = await Realtor.find();
 
       if (city && name) {
         realtors = realtors.filter(
-          (r) => r.city === city && r.fullName.includes(name)
+          (r) =>
+            (r.city === city ||
+              r.city.includes(city) ||
+              city.includes(r.city)) &&
+            (r.fullName.includes(name) || name.includes(r.fullName))
         );
+
         return realtors;
       }
 
       if (city) {
-        realtors = realtors.filter((r) => r.city === city);
+        realtors = realtors.filter(
+          (r) =>
+            r.city === city || r.city.includes(city) || city.includes(r.city)
+        );
         return realtors;
+      }
+    },
+    searchListings: async (_, { id }, { Realtor }) => {
+      try {
+        let realtor = await Realtor.findById(id).populate("properties");
+        return realtor.properties;
+      } catch (err) {
+        throw new ApolloError("Something went wrong. Try Again!!", 400);
+      }
+    },
+    searchRequests: async (_, { id }, { Realtor }) => {
+      try {
+        let realtor = await Realtor.findById(id);
+        return realtor.requests;
+      } catch (err) {
+        throw new ApolloError("Something went wrong. Try Again!!", 400);
       }
     },
     loginRealtor: async (_, { email, password }, { Realtor }) => {
@@ -82,17 +104,41 @@ export const resolvers = {
     authRealtorProfile: async (_, _args, { user }) => user,
   },
   Mutation: {
-    createNewProperty: async (_, { newProperty }, { Property, user }) => {
+    createNewProperty: async (
+      _,
+      { newProperty },
+      { Property, user, Realtor }
+    ) => {
       let result = await Property.create({
         ...newProperty,
         realtor: user._id,
       });
+
+      console.log(result);
+      await Realtor.findOneAndUpdate(
+        { _id: user._id },
+        { $push: { properties: result._id } }
+      );
       await result.populate("realtor");
       return result;
     },
+    createPropertyRequest: async (_, { newReq }, { Realtor }) => {
+      let { email, phone, name, message, id } = newReq;
+
+      try {
+        await Realtor.findOneAndUpdate(
+          { _id: id },
+          { $push: { requests: { email, name, phone, message } } }
+        );
+
+        return {
+          message: "Successfully Created !",
+        };
+      } catch (err) {
+        throw new ApolloError("Something Went Wrong. Try Again!!", 400);
+      }
+    },
     registerRealtor: async (_, { newRealtor }, { Realtor }) => {
-      //! Testing Loaders
-      await timeout(20000);
       try {
         let { userName, email } = newRealtor;
         //* Check if Username is exists already
@@ -128,18 +174,3 @@ export const resolvers = {
     },
   },
 };
-
-// return [
-//   {
-//     id: "1",
-//     for: "sell",
-//     type: "commercial",
-//     kind: "kkk",
-//     images: ["ddd", "dd"],
-//     area: "6666",
-//     rooms: "22",
-//     bathrooms: "22",
-//     description: "dddd",
-//     city: "ffff",
-//   },
-// ];

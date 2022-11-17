@@ -1,22 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { LinkArrow } from '../../../svgComponents/index';
 
-type LinkProps = {
+type LinkBoxProps = {
     to: string;
     text: string;
 };
 
-const Link: React.FC<LinkProps> = ({ to, text }) => {
+const LinkBox: React.FC<LinkBoxProps> = ({ to, text }) => {
     return (
         <div>
             <LinkArrow />
             &nbsp;
-            <a href={to} className="footer__links__text">
+            <Link to={to} className="footer__links__text">
                 {text}
-            </a>
+            </Link>
         </div>
     );
 };
 
-export default Link;
+export default LinkBox;

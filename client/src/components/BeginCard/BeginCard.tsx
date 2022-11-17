@@ -1,45 +1,43 @@
 import React from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import Radio from '../UI/Radio/Radio';
 import StyledRadio from '../UI/Radio/StyledRadio/StyledRadio';
+import { BeginCardFormValues } from '../../types';
+import { BeginCardSchema } from '../../utils/yupSchema';
 
 type BeginCardProps = {
-    submit: (e: React.SyntheticEvent) => void;
-    srHandler: (e: React.SyntheticEvent) => void;
-    pTypeHandler: (e: React.SyntheticEvent) => void;
-    pOptHandler: (e: React.SyntheticEvent) => void;
+    formSubmit: SubmitHandler<BeginCardFormValues>;
 };
 
-const BeginCard: React.FC<BeginCardProps> = ({ submit, srHandler, pOptHandler, pTypeHandler }) => {
+const BeginCard: React.FC<BeginCardProps> = ({ formSubmit }) => {
+    const {
+        handleSubmit,
+        register,
+        formState: { errors }
+    } = useForm<BeginCardFormValues>({ resolver: yupResolver(BeginCardSchema) });
+
     return (
-        <form className="sell__details__card w-6" onSubmit={submit}>
+        <form className="sell__details__card" onSubmit={handleSubmit(formSubmit)}>
             <p className="sell__details__card-heading">Begin Posting your Property</p>
             <p className="sell__details__card-heading-sub">You want to</p>
-            <div className="radio-toolbar" onChange={srHandler}>
-                <input type="radio" id="sell" name="sellOrRent" value="sell" required />
-                <label className="inc__padding-radio u-margin-right-medium" htmlFor="sell">
-                    Sell
-                </label>
-                <input type="radio" id="rent" name="sellOrRent" value="rent" required />
-                <label className="inc__padding-radio" htmlFor="rent">
-                    Rent
-                </label>
+            <div className={`radio-toolbar ${errors.for && 'radio-toolbar-error'}`}>
+                <Radio label="Sell" value="sell" register={{ ...register('for') }} />
+                <Radio label="Rent" value="rent" register={{ ...register('for') }} />
             </div>
-            <p>&nbsp;</p>
             <p className="sell__details__card-heading-sub">And its a</p>
-            <StyledRadio value="residential" label="Residential" name="property-type" selected={pTypeHandler} />
-            <StyledRadio value="commercial" label="Commercial" name="property-type" selected={pTypeHandler} />
-            <p>&nbsp;</p>
-            <div className="radio-toolbar" onChange={pOptHandler}>
-                <Radio label="House" value="house" />
-                <Radio label="Apartment" value="apartment" />
-                <Radio label="Villa" value="villa" />
-                <Radio label="Farmhouse" value="farmhouse" />
-                <Radio label="Land" value="land" />
-                <Radio label="Other" value="other" />
+            <StyledRadio value="residential" label="Residential" register={{ ...register('type') }} error={errors.type} />
+            <StyledRadio value="commercial" label="Commercial" register={{ ...register('type') }} error={errors.type} />
+            <div className={`radio-toolbar ${errors.kind && 'radio-toolbar-error'} u-margin-top-small`}>
+                <Radio label="House" value="house" register={{ ...register('kind') }} />
+                <Radio label="Apartment" value="apartment" register={{ ...register('kind') }} />
+                <Radio label="Villa" value="villa" register={{ ...register('kind') }} />
+                <Radio label="Farmhouse" value="farmhouse" register={{ ...register('kind') }} />
+                <Radio label="Land" value="land" register={{ ...register('kind') }} />
+                <Radio label="Other" value="other" register={{ ...register('kind') }} />
             </div>
-            <p>&nbsp;</p>
-            <button type="submit" className="btn btn--rec">
+            <button type="submit" className="btn btn--rec u-margin-top-small">
                 Begin to post property
             </button>
         </form>

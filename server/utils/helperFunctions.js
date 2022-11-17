@@ -3,7 +3,7 @@ import lodash from "lodash";
 
 import { SECRET } from "../config/index.js";
 
-export const propertyImagesLimit = (val) => val.length <= 5;
+export const propertyImagesLimit = (val) => val.length <= 4;
 
 export const issueToken = async (user) => {
   const { sign } = jwt;
@@ -23,6 +23,6 @@ export const serializeUser = (user) => {
     "city",
     "fullName",
     "avatarImage",
-    "specialization"
+    "specialization",
   ]);
 };

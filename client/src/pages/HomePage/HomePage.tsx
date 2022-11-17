@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 import DiscoverSection from '../../components/DiscoverSection/DiscoverSection';
 import FindHomeSection from '../../components/FindHomeSection/FindHomeSection';
@@ -10,6 +11,7 @@ const HomePage: React.FC = () => {
             <DiscoverSection />
             <FindHomeSection />
             <GridContainer />
+            <Helmet title="Lighthouse Reality | Welcome" />
         </>
     );
 };

@@ -1,18 +1,19 @@
 import React from 'react';
+import { UseFormRegisterReturn, FieldError } from 'react-hook-form';
 
 type StyledRadioProps = {
     value: string;
     label: string;
-    name: string;
-    selected: (e: React.SyntheticEvent) => void;
+    register: UseFormRegisterReturn<string>;
+    error?: FieldError | undefined;
 };
 
-const StyledRadio: React.FC<StyledRadioProps> = ({ selected, value, name, label }) => {
+const StyledRadio: React.FC<StyledRadioProps> = ({ register, value, label, error }) => {
     return (
         <div className="sell__details__radio-group u-margin-bottom-small">
-            <input type="radio" className="sell__details__radio-input" id={value} name={name} value={value} onChange={selected} required />
+            <input type="radio" className="sell__details__radio-input" id={value} value={value} {...register} />
             <label htmlFor={value} className="sell__details__radio-label">
-                <span className="sell__details__radio-button"></span>
+                <span className={`sell__details__radio-button ${error && 'sell__details__radio-button-error'}`}></span>
                 {label}
             </label>
         </div>

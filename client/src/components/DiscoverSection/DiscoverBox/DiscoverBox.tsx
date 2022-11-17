@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { RightArrowSingle, LeftArrowSingle } from '../../UI/svgComponents/index';
 
@@ -14,9 +15,9 @@ const DiscoverBox: React.FC<DiscoverBoxProps> = ({ boxNo, heading }) => {
                 <p className="box__heading">{heading}</p>
                 <div className="box__explore">
                     <RightArrowSingle />
-                    <a href="!#" className="box__explore__btn">
+                    <Link to="/buy" className="box__explore__btn">
                         Explore
-                    </a>
+                    </Link>
                     <LeftArrowSingle />
                 </div>
             </div>

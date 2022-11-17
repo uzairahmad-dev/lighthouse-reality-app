@@ -1,16 +1,15 @@
 .realtor {
-    
     &__top {
         background: $color-grey-light-1;
         width: 100%;
         height: 100vh;
 
         display: grid;
-        grid-template-columns: repeat(2,30%);
+        grid-template-columns: repeat(2, 30%);
         grid-gap: 1rem;
 
         @include respond(phone-max) {
-            grid-template-columns: repeat(1,50%);
+            grid-template-columns: repeat(1, 50%);
         }
 
         &-heading {
@@ -27,7 +26,7 @@
             }
         }
 
-        &-text{
+        &-text {
             font-size: 2.5rem;
             color: $color-primary;
             font-family: $font-nunito;
@@ -44,11 +43,11 @@
         &-box {
             grid-column: 1 / span end;
             text-align: center;
+            cursor: pointer;
         }
     }
 
     &__details--popup {
-
         &-text {
             display: flex;
             justify-content: flex-start;
@@ -76,9 +75,10 @@
 
 .profile {
     text-decoration: none;
-    margin-left: 8rem;
+    padding: 1rem;
     border-radius: 1rem;
-    transition: all .6s;
+    min-height: max-content;
+    transition: all 0.6s;
 
     display: grid;
     grid-template-columns: min-content max-content;
@@ -91,17 +91,17 @@
     }
 
     &:hover {
-        box-shadow: 0 1rem 2rem rgba($color-black,.2);
-        transform: translateY(-.8rem);
-        
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+        transform: translateY(-0.8rem);
     }
 
     &__details {
         display: block;
     }
-    
+
     &__img {
-        width: 9rem;
+        width: 10rem;
+        height: 10rem;
         border-radius: 50%;
         display: block;
 
@@ -115,7 +115,7 @@
         font-size: 2.6rem;
 
         @include respond(mobile) {
-           font-size: 2rem;
+            font-size: 2rem;
         }
     }
 

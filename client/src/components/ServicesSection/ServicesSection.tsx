@@ -12,6 +12,7 @@ const Services: React.FC = () => {
                     heading="Sell with us"
                     paragraph="Lighthouse Realty offers the absolute best exposure for selling your property.In turn, we increase the likelihood of a buyer finding the right property. "
                     btnText="Start Selling"
+                    to="/sell"
                 >
                     <SellLink />
                 </ServicesCard>
@@ -19,6 +20,7 @@ const Services: React.FC = () => {
                     heading="Buy from us"
                     paragraph="Lighthouse Realty offers the best properties in your budget. Buying from us is easy process just give us location of your choice and start Buying.."
                     btnText="Start Buying"
+                    to="/buy"
                 >
                     <BuyFromUs />
                 </ServicesCard>
@@ -26,6 +28,7 @@ const Services: React.FC = () => {
                     heading="Rental"
                     paragraph="Lighthouse Realty offers the absolute best exposure for selling your property.In turn, we increase the likelihood of a buyer finding the right property. "
                     btnText="Start Rental"
+                    to="buy?rent=true"
                 >
                     <RentalFromUs />
                 </ServicesCard>
@@ -33,6 +36,7 @@ const Services: React.FC = () => {
                     heading="Work with us"
                     paragraph="Become the best agent you can be. Lighthouse Realty agents are the TOP TEAM in Real Estate and provides the training necessary for you"
                     btnText="Become Realtor"
+                    to="signup"
                 >
                     <WorkWithUs />
                 </ServicesCard>

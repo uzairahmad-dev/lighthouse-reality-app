@@ -1,5 +1,4 @@
 .sign-up {
-
     &__form {
         width: 50%;
         margin: 1rem;
@@ -33,7 +32,8 @@
         }
 
         &--single-line {
-            width: 70%;
+            // background-color: $color-red;
+            // width: 70%;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -52,7 +52,7 @@
             font-size: 1.2rem !important;
             display: inline-block;
 
-            & > input[type="file"] {
+            & > input[type='file'] {
                 display: none;
             }
         }
@@ -64,7 +64,7 @@
         }
 
         &--loader {
-            width: 60%;
+            width: 14rem;
             justify-self: center;
             align-self: center;
 
@@ -83,6 +83,10 @@
                 width: 70%;
                 text-align: right;
             }
+        }
+
+        & > div {
+            width: 100%;
         }
     }
 

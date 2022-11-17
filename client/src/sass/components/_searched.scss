@@ -17,17 +17,6 @@
         }
     }
 
-    & .heading-big {
-        position: absolute;
-        top: 30%;
-        left: 50%;
-        transform: translateX(-50%);
-
-        @include respond(phone) {
-            top: 28%;
-        }
-    }
-
     &::after {
         content: '';
         width: 100%;
@@ -64,33 +53,26 @@
 
     &__houses {
         background: $color-grey-light-1;
-        height: 100vh;
+        padding: 1rem;
 
         display: grid;
-        grid-template-columns: repeat(3,1fr);
+        grid-template-columns: repeat(3, 1fr);
 
         &__left {
             grid-column: 1 / 2;
         }
-        
+
         &__right {
             grid-column: 2 / span end;
 
             @include respond(mobile) {
                 grid-column: 1 / span end;
             }
-
-            &--upper {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
         }
 
         &__map {
-
             &--img {
-                width: 42rem; 
+                width: 42rem;
 
                 @include respond(phone) {
                     width: 32rem;

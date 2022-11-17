@@ -6,17 +6,23 @@ import { ApolloProvider } from '@apollo/client';
 import { client } from './graphql/queries';
 import { store } from './store';
 
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import App from './App';
 
 import './sass/main.scss';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
     <React.StrictMode>
-        <Provider store={store}>
         <ApolloProvider client={client}>
-                <App />
-            </ApolloProvider>
-        </Provider>
+            <Provider store={store}>
+                <BrowserRouter>
+                    <ScrollToTop>
+                        <App />
+                    </ScrollToTop>
+                </BrowserRouter>
+            </Provider>
+        </ApolloProvider>
     </React.StrictMode>
 );

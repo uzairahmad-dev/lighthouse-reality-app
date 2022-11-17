@@ -23,8 +23,8 @@ const RealtorSearched: React.FC<RealtorSearchedProps> = ({ searched: { city, nam
         content = <h1>Something Went Wrong...</h1>;
     }
 
-    if(realtors) {
-        content = realtors.map((r: Realtor)  => <RealtorLink name={r.fullName} sold={r.sold} avatar={r.avatarImage} />)
+    if (realtors) {
+        content = realtors.map((r: Realtor) => <RealtorLink realtor={r} key={r.id} />);
     }
 
     return (

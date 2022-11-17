@@ -1,40 +1,38 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
-import InputSimple from '../../components/UI/Input/InputSimple/InputSimple';
 import Showcase from '../../components/Showcase/Showcase';
 import SellContent from './SellContent/SellContent';
-// import SellDetails from '../../components/SellDetails/SellDetails';
-import { AppDispatch } from '../../store';
-import { updateCity } from '../../store/SellDetails/SellDetailsSlice';
+import SellDetails from '../../components/SellDetails/SellDetails';
 import { SellBg } from '../../assets/image/index';
+import { RootState } from '../../store';
 
 const Sell: React.FC = () => {
-    const [searchedCity, setSearchedCity] = useState<string>('');
-    const [onSearch, setOnSearch] = useState(true);
-
-    const dispatch = useDispatch<AppDispatch>();
-
-    const submitHandler = (e: React.SyntheticEvent) => {
-        e.preventDefault();
-        dispatch(updateCity(searchedCity));
-        setOnSearch(false);
-    };
+    const authSlice = useSelector((state: RootState) => state.user.isAuth);
 
     let pageContent = (
-        <React.Fragment>
-            <Showcase bgImg={SellBg} heading="Sell or Rent your Home" paragraph="We've partnered with companies to help you sell, buy and move. Find out what options are available for your home.">
-                <InputSimple holderText="Enter City Name" btnText="Get Started" submit={submitHandler} changed={(e: React.ChangeEvent<HTMLInputElement>) => setSearchedCity(e.target.value)} />
-            </Showcase>
+        <>
+            <Showcase
+                bgImg={SellBg}
+                heading="Sell or Rent your Property"
+                paragraph="We've partnered with companies to help you sell, buy and move. Find out what options are available for your home."
+                small={true}
+            ></Showcase>
             <SellContent />
-        </React.Fragment>
+        </>
     );
 
-    if (!onSearch) {
-        // pageContent = <SellDetails />;
+    if (authSlice) {
+        pageContent = <SellDetails />;
     }
 
-    return pageContent;
+    return (
+        <>
+            {pageContent}
+            <Helmet title="Lighthouse Reality | Sell with us" />
+        </>
+    );
 };
 
 export default Sell;

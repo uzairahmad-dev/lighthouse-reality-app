@@ -1,19 +1,19 @@
 import React from 'react';
 
-import Link from './Link/Link';
+import LinkBox from './LinkBox/LinkBox';
 
 const Links: React.FC = () => {
     return (
         <div className="footer__links">
             <div>
-                <Link to="!#" text="Buy" />
-                <Link to="!#" text="Sell" />
-                <Link to="!#" text="Rental" />
+                <LinkBox to="/buy" text="Buy" />
+                <LinkBox to="/sell" text="Sell" />
+                <LinkBox to="/buy?rent=true" text="Rental" />
             </div>
             <div>
-                <Link to="!#" text="Login" />
-                <Link to="!#" text="Work with us" />
-                <Link to="!#" text="Our Realtors" />
+                <LinkBox to="/login" text="Login" />
+                <LinkBox to="/signup" text="Work with us" />
+                <LinkBox to="/realtors" text="Our Realtors" />
             </div>
         </div>
     );

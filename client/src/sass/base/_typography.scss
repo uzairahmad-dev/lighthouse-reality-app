@@ -29,7 +29,7 @@ body {
     }
 
     @include respond(tab-port-mini-x) {
-       font-size: 3rem;
+        font-size: 3rem;
     }
 }
 
@@ -69,14 +69,15 @@ body {
     color: $color-secondary;
     font-size: 1.5rem;
     font-family: $font-nunito;
+    text-transform: capitalize;
 
     &-j {
-    font-family: $font-josef;
+        font-family: $font-josef;
     }
 }
 
 .para-fade {
-    opacity: .8;
+    opacity: 0.8;
 }
 
 .para-secondary-bold {
@@ -110,16 +111,15 @@ body {
 }
 
 .para-disable {
-
     @include respond(tab-port-max) {
         display: none;
     }
-} 
+}
 
 .span-text {
     color: $color-primary;
     font-family: $font-nunito;
-    font-size:1.6rem;
+    font-size: 1.6rem;
 }
 
 .terms-text {

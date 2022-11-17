@@ -17,3 +17,5 @@ export { default as BuyBg } from './buy__bg.jpg';
 export { default as RealtorBg } from './realtor__bg.jpg';
 export { default as Couple } from './couple.jpeg';
 export { default as BeachHouse } from './beach_house.jpeg';
+export { default as Map } from './map.png';
+

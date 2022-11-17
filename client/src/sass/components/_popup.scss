@@ -128,12 +128,16 @@
     }
 
     &__close {
-        font-size: 4rem;
+        font-size: 3rem;
         color: $color-grey-light-1;
         font-weight: bold;
         position: absolute;
         top: 1rem;
         right: 2rem;
         cursor: pointer;
+
+        &:hover {
+            color: $color-primary;
+        }
     }
 }

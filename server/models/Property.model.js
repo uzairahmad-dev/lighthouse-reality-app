@@ -24,7 +24,7 @@ const PropertySchema = new Schema(
       type: [String],
       validate: [
         propertyImagesLimit,
-        "From 1 to 5 Property Images will be Accepted.",
+        "From 1 to 4 Property Images will be Accepted.",
       ],
       required: true,
     },
@@ -45,6 +45,10 @@ const PropertySchema = new Schema(
       required: true,
     },
     city: {
+      type: String,
+      required: true,
+    },
+    price: {
       type: String,
       required: true,
     },

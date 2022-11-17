@@ -39,6 +39,10 @@
         background: $color-grey-light-1;
         box-shadow: 0 1rem 2rem rgba($color-black,.1);
         position: relative;
+
+        &--error {
+            border: 2px $color-red solid;
+        }
         
         @include respond(phone-max) {
             width: 50rem;
@@ -84,6 +88,10 @@
             padding-top: 1.8rem;
             padding-bottom: 1.8rem;
             padding-left: 1.8rem;
+
+            &--error {
+                border: 2px $color-red solid;
+            }
 
             @include respond(phone) {
                 padding-top: 1.4rem;

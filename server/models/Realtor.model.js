@@ -44,6 +44,32 @@ const RealtorSchema = new Schema(
       default: "residential",
       required: true,
     },
+    properties: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "properties",
+      },
+    ],
+    requests: [
+      {
+        name: {
+          type: String,
+          required: true,
+        },
+        phone: {
+          type: String,
+          required: true,
+        },
+        email: {
+          type: String,
+          required: true,
+        },
+        message: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
   },
   { timestamps: true }
 );

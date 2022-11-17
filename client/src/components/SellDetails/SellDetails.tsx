@@ -1,50 +1,79 @@
-// import React, { useState } from 'react';
-// import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { SubmitHandler } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
-// import { RootState } from '../../store';
-// import BeginCard from '../BeginCard/BeginCard';
-// import HireRealtorModal from '../UI/Modal/HireRealtorModal/HireRealtorModal';
-// import { PropertyDetails } from '../../assets/svg/index';
+import BeginCard from '../BeginCard/BeginCard';
+import FinalCard from '../FinalCard/FinalCard';
+import { PropertyDetails, PropertyOwnership } from '../../assets/svg/index';
+import { BeginCardFormValues, FinalCardFormValues } from '../../types';
+import { uploadPropertyImages } from '../../utils/helper-functions';
+import { useCreateProperty } from '../../graphql/hooks';
 
-// const SellDetails: React.FC = () => {
-//     const [beginCard, setBeginCard] = useState<Boolean>(true);
-//     const [isOpen, setIsOpen] = useState<Boolean>(false);
+const DEFAULT_IMAGE = ['https://images.adsttc.com/media/images/5f51/a5d9/b357/65fa/5600/025b/large_jpg/Ozkiniai_eksterjeras_132.jpg?1599186382'];
 
-//     const sellDetailsSlice = useSelector((state: RootState) => state.sellDetails);
+const initialState = {
+    for: '',
+    type: '',
+    kind: ''
+};
 
-//     let pageSvg: string = '';
-//     let pageHeading: string = '';
-//     let pagePara: string = '';
-//     let card;
+const SellDetails: React.FC = () => {
+    const [beginValues, setBeginValues] = useState(initialState);
+    const [finalCard, setFinalCard] = useState<boolean>(false);
+    const [isImgLoading, setIsImgLoading] = useState<boolean>(false);
 
-//     if (beginCard) {
-//         pageSvg = PropertyDetails;
-//         pageHeading = 'Add your Property Details';
-//         pagePara = 'Begin by telling us the few details about your property';
-//         card = <BeginCard submit={e: React.SyntheticEvent => } />;
-//     }
+    const { makeReq, loading, error } = useCreateProperty();
+    const navigate = useNavigate();
 
-//     return (
-//         <>
-//             <HireRealtorModal open={isOpen} onClose={() => setIsOpen(false)} />
-//             <section className="sell__details">
-//                 <div className="sell__details__begin">
-//                     <div className="sell__details__begin--left">
-//                         <div>
-//                             <p className="heading-big">{pageHeading}</p>
-//                             <p className="paragraph paragraph-primary">{pagePara}</p>
-//                         </div>
-//                         <img src={pageSvg} alt="sell_begin" />
-//                     </div>
-//                     <div className="sell__details__begin--right">{card}</div>
-//                 </div>
-//             </section>
-//             <div>
-//                 <h1>{sellDetailsSlice.city}</h1>
-//             </div>
-//         </>
-//     );
-// };
+    const beginFormSubmit: SubmitHandler<BeginCardFormValues> = (data) => {
+        setBeginValues({ ...beginValues, for: data.for, kind: data.kind, type: data.type });
+        setFinalCard(true);
+    };
 
-// export default SellDetails;
-export {};
+    const finalFormSubmit: SubmitHandler<FinalCardFormValues> = async (data) => {
+        setIsImgLoading(true);
+        const links = await uploadPropertyImages(Array.from(data.images));
+
+        const newProperty = {
+            ...beginValues,
+            rooms: data.rooms.toString(),
+            bathrooms: data.bathrooms.toString(),
+            price: data.price.toString(),
+            description: data.description,
+            city: data.city,
+            area: data.area.toString(),
+            images: links || DEFAULT_IMAGE
+        };
+        setIsImgLoading(false);
+
+        await makeReq(newProperty);
+        if (!error && !loading) {
+            navigate('/profile/listings');
+        }
+    };
+
+    let pageSvg = PropertyDetails;
+    let pageHeading = 'Add your Property Details';
+    let pagePara = 'Begin by telling us the few details about your property';
+    let card = <BeginCard formSubmit={beginFormSubmit} />;
+
+    if (finalCard) {
+        pageSvg = PropertyOwnership;
+        pageHeading = 'Add Other Details';
+        pagePara = 'Reach upto 2.5M Buyers';
+        card = <FinalCard formSubmit={finalFormSubmit} imgLoading={isImgLoading} loading={loading} error={error} />;
+    }
+
+    return (
+        <section className="sell__details">
+            <div className="sell__details--left">
+                <p className="heading-big">{pageHeading}</p>
+                <p className="paragraph paragraph-primary u-margin-bottom-medium">{pagePara}</p>
+                <img src={pageSvg} alt="sell_begin" />
+            </div>
+            <div className="sell__details--right">{card}</div>
+        </section>
+    );
+};
+
+export default SellDetails;

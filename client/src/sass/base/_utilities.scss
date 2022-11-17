@@ -2,44 +2,80 @@
 ** - UTILITY CLASSES
 **/
 
-// Text Center 
-.u-center-text { text-align: center !important; }
-.u-right-text { text-align: right !important; }
-.u-left-text { text-align: left !important; }
+// Text Center
+.u-center-text {
+    text-align: center !important;
+}
+.u-right-text {
+    text-align: right !important;
+}
+.u-left-text {
+    text-align: left !important;
+}
 
 // Give Margin Bottom
-.u-margin-bottom-small { margin-bottom: 1rem !important; }
-.u-margin-bottom-s { margin-bottom: 3rem !important}
+.u-margin-bottom-small {
+    margin-bottom: 1rem !important;
+}
+.u-margin-bottom-s {
+    margin-bottom: 3rem !important;
+}
 .u-margin-bottom-medium {
-    margin-bottom: 4rem !important; 
+    margin-bottom: 4rem !important;
     @include respond(tab-port) {
         margin-bottom: 3rem !important;
     }
 }
-.u-margin-bottom-big { 
-    margin-bottom: 8rem !important; 
+.u-margin-bottom-big {
+    margin-bottom: 8rem !important;
 
     @include respond(tab-port) {
         margin-bottom: 5rem !important;
     }
 }
 // Give Margin Top
-.u-margin-top-huge { margin-top: 10rem !important; } 
-.u-margin-top-big { margin-top: 8rem !important; } 
-.u-margin-top-medium { margin-top: 7rem !important; } 
-.u-margin-top-small { margin-top: 2rem !important; } 
+.u-margin-top-huge {
+    margin-top: 10rem !important;
+}
+.u-margin-top-big {
+    margin-top: 8rem !important;
+}
+.u-margin-top-medium {
+    margin-top: 7rem !important;
+}
+.u-margin-top-small {
+    margin-top: 2rem !important;
+}
 
-.u-margin-right-small { margin-right: 2rem !important; } 
-.u-margin-right-medium { margin-right: 4rem !important; }
-.u-margin-right-mini { margin-right: 5px !important; }  
+.u-margin-right-small {
+    margin-right: 2rem !important;
+}
+.u-margin-right-medium {
+    margin-right: 4rem !important;
+}
+.u-margin-right-mini {
+    margin-right: 5px !important;
+}
 
-.u-margin-left-small { margin-left: 2rem !important; } 
-.u-margin-left-medium { margin-left: 4rem !important; } 
-.u-margin-left-huge { margin-left: 11rem !important; } 
-.u-margin-left-mini { margin-left: 5px !important; } 
+.u-margin-left-small {
+    margin-left: 2rem !important;
+}
+.u-margin-left-medium {
+    margin-left: 4rem !important;
+}
+.u-margin-left-huge {
+    margin-left: 11rem !important;
+}
+.u-margin-left-mini {
+    margin-left: 5px !important;
+}
+
+.u-mx-auto {
+    margin: 0 auto;
+}
 
 .inc_mb {
-    margin-bottom: .8rem !important;
+    margin-bottom: 0.8rem !important;
 }
 .no-margin {
     margin: 0 !important;
@@ -51,6 +87,10 @@
 
 .block {
     display: block !important;
+}
+
+.u-w-full {
+    width: 100% !important;
 }
 
 .top__right {
@@ -65,6 +105,13 @@
     @include respond(phone) {
         width: 10rem;
     }
+}
+
+.center__center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .bottom__left {
@@ -117,21 +164,18 @@
 }
 
 .copyright__text {
-
     @include respond(phone) {
-        font-size: .9rem !important;
-     }
+        font-size: 0.9rem !important;
+    }
 
-     @include respond(mobile) {
-        font-size: .6rem !important;
+    @include respond(mobile) {
+        font-size: 0.6rem !important;
     }
 }
 
 .icons {
-
     & svg {
-
-        margin-right: .6rem;
+        margin-right: 0.6rem;
 
         @include respond(mobile) {
             height: 2.8rem;
@@ -184,15 +228,15 @@
     content: '';
     display: block;
     width: 0%;
-    height: .2rem;
-    margin-top: -.6rem;
+    height: 0.2rem;
+    margin-top: -0.6rem;
     background-color: $color-primary;
-    transition: width .3;
+    transition: width 0.3;
 }
 
 .line__hover:hover::after {
     width: 100%;
-    transition: width .3s;
+    transition: width 0.3s;
 }
 
 // underline on active
@@ -201,45 +245,9 @@
     content: '';
     display: block;
     width: 100%;
-    height: .2rem;
-    margin-top: -.6rem;
+    height: 0.2rem;
+    margin-top: -0.6rem;
     background-color: $color-primary;
-}
-
-// Radio Button
-.radio-toolbar {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.radio-toolbar input[type="radio"] {
-    opacity: 0;
-    position: fixed;
-    width: 0;
-  }
-
-.radio-toolbar label {
-    display: inline-block;
-    background-color: $color-grey-light-3;
-    color: $color-primary-dark;
-    padding: 3px 2rem;
-    font-family: $font-nunito;
-    font-size: 2rem;
-    font-weight: bold;
-    border: 1px solid $color-grey-dark;
-    border-radius: 3rem;
-    flex: 0 0 40%;
-    margin: 1rem;
-
-}
-
-.radio-toolbar input[type="radio"]:checked + label {
-    background-color:$color-primary;
-    color: $color-secondary;
-}
-
-.inc__padding-radio {
-    padding: 3px 4rem !important;
 }
 
 // Card Container
@@ -257,22 +265,79 @@
         margin: 0 2rem;
     }
 
+    &--no-result {
+        grid-column: 1 / span end;
+        align-self: center;
+        justify-self: center;
+
+        & > img {
+            width: 12rem;
+        }
+    }
+
+    &--request {
+        background-color: $color-grey-light-1;
+        grid-column: 1 / span end;
+        justify-self: center;
+        width: 96%;
+        margin: 0 auto;
+        padding: 1rem;
+        border-radius: 1rem;
+
+        &-box {
+            width: 90%;
+            padding: 1rem;
+            margin: 1rem auto;
+            border: 2px solid $color-primary;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.6s;
+
+            &:hover {
+                width: 94%;
+            }
+
+            &-h {
+                font-size: 1.6rem;
+                font-weight: bold;
+                color: $color-primary-dark;
+            }
+
+            &-p {
+                font-size: 1.4rem;
+                color: $color-primary;
+            }
+        }
+    }
+
     &-buy-search {
         overflow: scroll;
         overflow-x: hidden;
-        height: 82vh;
+        height: 100%;
+        padding: 1rem;
 
-        
+        &--box {
+            grid-column-end: span 2;
+            justify-self: center;
+            align-self: center;
+            padding: 1rem;
+
+            &-loader {
+                width: 14rem;
+            }
+        }
 
         &::-webkit-scrollbar {
             width: 1.8rem;
         }
-        
+
         &::-webkit-scrollbar-track {
             box-shadow: inset 0 0 10px 10px $color-grey-light-2;
             border: solid 3px transparent;
         }
-        
+
         &::-webkit-scrollbar-thumb {
             background: $color-grey-light-1;
             box-shadow: inset 0 0 10px 10px $color-primary;
@@ -301,7 +366,6 @@
 }
 
 .form {
-
     &__error {
         min-width: 80%;
         background-color: $color-red-2;
@@ -317,4 +381,8 @@
             color: $color-red;
         }
     }
+}
+
+.color-primary {
+    color: $color-primary;
 }

@@ -1,22 +1,25 @@
 import React from 'react';
-import ProfileDetails from '../../components/ProfileDetails/ProfileDetails';
+import { Helmet } from 'react-helmet';
+import { Outlet } from 'react-router-dom';
+
 import ProfileSideBar from '../../components/ProfileSideBar/ProfileSideBar';
 
-type ProfileProps = {}
-
-const Profile: React.FC<ProfileProps> = () => {
-  return (
-    <div className='body'>
-      <main className='main'>
-        <div className="user-view">
-          <ProfileSideBar />
-          <div className="user-view__content">
-            <ProfileDetails />
-          </div>
-        </div>
-      </main>
-    </div>
-  )
-}
+const Profile: React.FC = () => {
+    return (
+        <>
+            <div className="body">
+                <main className="main">
+                    <div className="user-view">
+                        <ProfileSideBar />
+                        <div className="user-view__content">
+                            <Outlet />
+                        </div>
+                    </div>
+                </main>
+            </div>
+            <Helmet title="Lighthouse Reality | Profile" />
+        </>
+    );
+};
 
 export default Profile;

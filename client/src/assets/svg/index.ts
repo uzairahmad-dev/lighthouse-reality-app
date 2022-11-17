@@ -10,12 +10,17 @@ export { default as PropertyOwnership } from './property-ownership.svg';
 export { default as SellBegin } from './sell_begin.svg';
 export { default as LoaderSvg } from './loader.svg';
 export { default as UserSvg } from './user.svg';
+export { default as UserDarkSvg } from './user-dark.svg';
 export { default as CustomerSvg } from './customer.svg';
 export { default as UploadSvg } from './upload.svg';
 export { default as SettingsSvg } from './settings.svg';
 export { default as PhoneSvg } from './phone.svg';
 export { default as EmailSvg } from './email.svg';
 export { default as AddressSvg } from './address.svg';
-
-
-
+export { default as DollarSvg } from './dollar.svg';
+export { default as DotSvg } from './dot.svg';
+export { default as BedSvg } from './bedrooms.svg';
+export { default as BathSvg } from './bath.svg';
+export { default as LocSvg } from './location-pointer.svg';
+export { default as ConfirmSvg } from './confirm.svg';
+export { default as HouseSvg } from './house.svg';

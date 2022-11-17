@@ -4,6 +4,8 @@ export const typeDefs = gql`
   directive @isAuth on FIELD_DEFINITION
   type Query {
     searchProperties(searchPropertyInput: SearchPropertyInput): [Property]!
+    searchListings(id: ID!): [Property]!
+    searchRequests(id: ID!): [Requests]!
     searchRealtors(city: String!, name: String): [Realtor]!
     loginRealtor(email: String!, password: String!): AuthRes!
     authRealtorProfile: Realtor! @isAuth
@@ -12,6 +14,7 @@ export const typeDefs = gql`
   type Mutation {
     createNewProperty(newProperty: PropertyInput!): Property! @isAuth
     registerRealtor(newRealtor: RealtorInput!): AuthRes!
+    createPropertyRequest(newReq: newReqInput!): PropertyReqRes!
   }
 
   ##//? PROPERTY RELATED TYPES & INPUTS
@@ -31,6 +34,15 @@ export const typeDefs = gql`
     bathrooms: String!
     description: String!
     city: String!
+    price: String!
+  }
+
+  input newReqInput {
+    id: ID!
+    name: String!
+    phone: String!
+    email: String!
+    message: String!
   }
 
   type Property {
@@ -43,10 +55,15 @@ export const typeDefs = gql`
     rooms: String!
     bathrooms: String!
     description: String!
+    price: String!
     city: String!
     realtor: Realtor!
     createdAt: String
     updatedAt: String
+  }
+
+  type PropertyReqRes {
+    message: String!
   }
 
   ##//? REALTOR RELATED TYPES & INPUTS
@@ -81,5 +98,13 @@ export const typeDefs = gql`
     specialization: String
     createdAt: String
     updatedAt: String
+  }
+
+  type Requests {
+    id: ID!
+    name: String!
+    email: String!
+    phone: String!
+    message: String!
   }
 `;
