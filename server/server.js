@@ -5,24 +5,23 @@ import { ApolloServer } from "apollo-server-express";
 import cors from "cors";
 import { typeDefs } from "./graphql/typeDefs.js";
 import { resolvers } from "./graphql/resolvers.js";
-import { PORT, IN_PROD } from "./config/index.js";
+import dotenv from 'dotenv';
 import { connectDB } from "./config/db.js";
 import * as AppModels from "./models/index.js";
 import AuthMiddleware from "./middlewares/auth.js";
 import { schemaDirectives } from "./graphql/directives/index.js";
+dotenv.config();
 
 const { success } = consola;
 
 async function startServer() {
   const app = express();
   app.use(AuthMiddleware);
-  // app.use(graphqlUploadExpress());
 
   const apolloServer = new ApolloServer({
     typeDefs,
     resolvers,
     schemaDirectives,
-    playground: !IN_PROD,
     context: ({ req }) => {
       let { isAuth, user } = req;
       return {
@@ -39,10 +38,10 @@ async function startServer() {
   app.use(cors());
   await connectDB();
 
-  app.listen(PORT, () =>
+  app.listen(process.env.PORT, () =>
     success({
       badge: true,
-      message: `Server is Running on Port ${PORT} `.green.underline.bold,
+      message: `Server is Running on Port ${process.env.PORT} `.green.underline.bold,
     })
   );
 }
