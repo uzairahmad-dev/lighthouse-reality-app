@@ -5,6 +5,9 @@
   "version": "0.0.1",
   "description": "Real Estate MERN stackapplication",
   "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
