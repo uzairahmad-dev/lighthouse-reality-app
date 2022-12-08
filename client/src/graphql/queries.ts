@@ -1,6 +1,6 @@
 import { ApolloClient, gql, InMemoryCache } from '@apollo/client';
 
-const GRAPHQL_URL = 'http://localhost:5000/graphql';
+const GRAPHQL_URL = 'https://lighthouse-reality-app.vercel.app/graphql';
 
 export const client = new ApolloClient({
     uri: GRAPHQL_URL,
