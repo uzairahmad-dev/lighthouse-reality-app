@@ -1,5 +1,3 @@
-import { SECRET } from "../config/index.js";
-
 import { Realtor } from "../models/index.js";
 
 import jwt from "jsonwebtoken";
@@ -27,7 +25,7 @@ const AuthMiddleware = async (req, res, next) => {
   let decodedToken;
   const { verify } = jwt;
   try {
-    decodedToken = verify(token, SECRET);
+    decodedToken = verify(token, process.env.SECRET);
   } catch (err) {
     req.isAuth = false;
     return next();
